@@ -14,12 +14,32 @@
 </head>
 
 <body>
+	<script>
+		function search() {
+			let text = $('#txtSearch').val();
+			let ignorecase = $('#chkIgnoreCase').is(':checked');
+			$('#tree').data('plugin_bstreeview').search(text,ignorecase);
+		}		
+	</script>
 	<div class="container">
 		<div class="content">
 			<div class="row">
 				<div class="col-md-6 pt-5">
-					<div id="tree" class="card card-body">
+					<div class="mb-2">
+						<div>
+							<div class="input-group">
+								<input type="text" id="txtSearch" class="form-control" placeholder="Search..." oninput="search()">
+								<button type="button" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" onclick="$('#txtSearch').val('');search();">
+								  <i class="fa fa-times"></i>
+								</button>
+							</div>		
+							<div class="form-check">
+								<label class="form-check-label"><input id="chkIgnoreCase" type="checkbox" class="form-check-input" onchange="search()"> Ignore case</label>			
+							</div>																		
+						</div>						
 					</div>
+					<!-- tree -->
+					<div id="tree" class="card card-body"/>					
 				</div>
 			</div>
 		</div>
@@ -34,7 +54,7 @@
 	<script>
 		$(function () {
 
-			var json = [
+			let json = [
 				{
 					text: "Inbox",
 					icon: "fa fa-inbox fa-fw",
@@ -55,7 +75,13 @@
 						},
 						{
 							icon: "fa fa-inbox fa-fw",
-							text: "Others"
+							text: "Others",
+							nodes: [
+								{
+									icon: "fa fa-inbox fa-fw",
+									text: "Office"
+								}
+							]
 						}
 					]
 				},
@@ -80,6 +106,12 @@
 					text: "Go to Google",
                     class: "text-info",
                     href: "https://google.com"
+                },
+				{
+                    icon: "fa fa-globe fa-fw",
+					text: "qqOffic2e 2",
+                    class: "text-info",
+                    href: "https://google.com"
                 }
 			];
 
@@ -93,6 +125,9 @@
                 openNodeLinkOnNewTab: true
 			});
 		});
+
+
+		
 	</script>
 </body>
 </html>
