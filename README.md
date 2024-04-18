@@ -43,6 +43,13 @@ function getTree() {
 $('#tree').bstreeview({ data: getTree() });
 ```
 
+Search in the tree
+```javascript
+let text = "Office";
+let ignorecase = true;
+$('#tree').data('plugin_bstreeview').search(text,ignorecase);
+```
+
 
 ## Data Structure
 
