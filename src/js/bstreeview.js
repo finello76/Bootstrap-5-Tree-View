@@ -149,13 +149,13 @@
 				
 				let leftPadding = _this.settings.parentsMarginLeft;
 
-				if (depth > 0) {
-					leftPadding = _this.settings.indent + depth * _this.settings.indent;										
-				}
-				
-				if (!node.nodes) {
-					leftPadding+=_this.settings.chevronIntent;
-				}
+                if (depth > 0) {
+                    leftPadding = (depth-1) * _this.settings.indent;
+                }
+
+                if (!node.nodes) {
+                    leftPadding+=_this.settings.chevronIntent;
+                }
 				
                 // Main node element.
                 let treeItem = $(templates.treeviewItem)
