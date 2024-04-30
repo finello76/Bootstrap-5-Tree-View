@@ -22,18 +22,18 @@ Add the following resources for the bootstrap-treeview to function correctly.
 <!-- Required Stylesheets -->
 
 <!-- Link to Bootstrap CSS file -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
-    <!-- Link to Font Awesome CSS file -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Link to Font Awesome JavaScript file -->
+<!-- Link to Font Awesome CSS file -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- Link to Font Awesome JavaScript file -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Required Javascript -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 ```
 
 The component will bind to any existing DOM element.
@@ -83,7 +83,7 @@ var tree = [
             text:  "Sub Child Node 1",
             icon:  "fa fa-folder",
             class: "nav-level-3",
-            href:  "https://google.com"
+            href:  "https://example.com"
           },
           {
             text: "Sub Child Node 2",
@@ -176,6 +176,9 @@ Collapse icon class name, default is `fa fa-angle-right fa-fw`.
 #### indent
 `number with decimals` `Optional`
 
+#### chevronIntent
+`number with decimals`
+
 Custom indent between node levels (rem), default is `1.25`.
 
 #### parentsMarginLeft
@@ -191,28 +194,19 @@ Open node link on new browser Tab, default is `true`.
 ```javascript
 // Example: initializing the bstreeview
 $('#tree').bstreeview({
-  data: data,
-  expandIcon: 'fa fa-angle-down fa-fw',
-  collapseIcon: 'fa fa-angle-right fa-fw',
-  indent: 1.25,
-  parentsMarginLeft: '1.25rem',
-  openNodeLinkOnNewTab: true
-});
+    data: json,
+    expandIcon: 'fa fa-angle-down fa-fw',
+    collapseIcon: 'fa fa-angle-right fa-fw',
+    indent: 1.25,
+    chevronIntent: 1.25,
+    parentsMarginLeft: 1.25,
+    openNodeLinkOnNewTab: true
+  });
 ```
-
-## Methods
-
-
-## Events
-
-
-
-
 
 ## Copyright and Licensing
 Copyright 2020 Sami CHNITER
-
-Modified by Andrea Fini (2024)
+Modified by Copyright 2024 Andrea Fini
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
