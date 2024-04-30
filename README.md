@@ -5,7 +5,7 @@ this is a fork of https://github.com/chniter/bstreeview
 A very simple plugin to build a basic and elegant Treeview with boostrap 5.2.3
 
 # Screenshot
-![Screenshot](https://raw.githubusercontent.com/finello76/Bootstrap-5-Tree-View/main/screeshots/bstreeview_5.3.PNG)
+![Screenshot](https://raw.githubusercontent.com/finello76/Bootstrap-5-Tree-View/main/screeshots/bstreeview_sc1.PNG)
 
 ## Dependencies
 
