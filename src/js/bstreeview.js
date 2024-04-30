@@ -1,12 +1,13 @@
 /*! @preserve
  * bstreeview.js
  * Version: 1.2.1
- * Authors: Sami CHNITER <sami.chniter@gmail.com>
+ * Authors: Sami CHNITER <sami.chniter@gmail.com>, Andrea Fini <andrea.fini@gmail.com>
  * Copyright 2020
  * License: Apache License 2.0
  *
  * Project: https://github.com/chniter/bstreeview
  * Project: https://github.com/nhmvienna/bs5treeview (bootstrap 5)
+ * Project: https://github.com/finello76/Bootstrap-5-Tree-View (bootstrap 5.3)
  */
 ; (function ($, window, document, undefined) {
     "use strict";
@@ -28,7 +29,7 @@
      * bstreeview HTML templates.
      */
     let templates = {    
-        treeviewItem: '<div class="lh-lg" data-bs-toggle="collapse"></div>',
+        treeviewItem: '<div class="lh-lg" data-bs-toggle="collapse" role="button"></div>',
         treeviewGroupItem: '<div class="lh-lg collapse" id="itemid"></div>',
         treeviewItemStateIcon: '<i class="state-icon"></i>',
         treeviewItemIcon: '<i class="item-icon"></i>'
@@ -75,7 +76,7 @@
             let _this = this;
             this.build($(this.element), this.tree, 0);
             // Update angle icon on collapse
-            $(this.element).on('click', '.list-group-item', function (e) {
+            $(this.element).on('click', '[data-bs-toggle="collapse"]', function (e) {        
                 $('.state-icon', this)
                     .toggleClass(_this.settings.expandIcon)
                     .toggleClass(_this.settings.collapseIcon);
@@ -149,13 +150,13 @@
 				
 				let leftPadding = _this.settings.parentsMarginLeft;
 
-				if (depth > 0) {
-					leftPadding = _this.settings.indent + depth * _this.settings.indent;										
-				}
-				
-				if (!node.nodes) {
-					leftPadding+=_this.settings.chevronIntent;
-				}
+                if (depth > 0) {
+                    leftPadding = (depth-1) * _this.settings.indent;
+                }
+
+                if (!node.nodes) {
+                    leftPadding+=_this.settings.chevronIntent;
+                }
 				
                 // Main node element.
                 let treeItem = $(templates.treeviewItem)
