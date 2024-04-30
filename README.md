@@ -1,10 +1,11 @@
 # Bootstrap 5 Tree View
 
-this is a fork of https://github.com/chniter/bstreeview.
-For use with bootstrap 5 the attributes have been changed from data-target and data-toggle to the new data-bs-target and data-bs-toogle syntax.
+this is a fork of https://github.com/chniter/bstreeview
 
 A very simple plugin to build a basic and elegant Treeview with boostrap 5.2.3
 
+# Screenshot
+![Screenshot](https://raw.githubusercontent.com/finello76/Bootstrap-5-Tree-View/main/screeshots/bstreeview.PNG)
 
 ## Dependencies
 
@@ -19,11 +20,20 @@ Add the following resources for the bootstrap-treeview to function correctly.
 
 ```html
 <!-- Required Stylesheets -->
-<link href="bootstrap.css" rel="stylesheet">
+
+<!-- Link to Bootstrap CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+    <!-- Link to Font Awesome CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Link to Font Awesome JavaScript file -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js" integrity="sha512-u3fPA7V8qQmhBPNT5quvaXVa1mnnLSXUep5PS1qo5NRzHwG19aHmNJnj1Q8hpA/nBWZtZD4r4AX6YOt5ynLN2g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Required Javascript -->
-<script src="jquery.js"></script>
-<script src="bstreeview.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 ```
 
 The component will bind to any existing DOM element.
