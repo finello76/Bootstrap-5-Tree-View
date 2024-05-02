@@ -20,7 +20,7 @@
             collapseIcon: 'fa fa-angle-right fa-fw',
             expandClass: 'show',
             indent: 1.25,
-			chevronIntent: 1,
+            chevronIntent: 1,
             parentsMarginLeft: 1.25,
             openNodeLinkOnNewTab: true
 
@@ -28,7 +28,7 @@
     /**
      * bstreeview HTML templates.
      */
-    let templates = {    
+    let templates = {
         treeviewItem: '<div class="lh-lg" data-bs-toggle="collapse" role="button"></div>',
         treeviewGroupItem: '<div class="lh-lg collapse" id="itemid"></div>',
         treeviewItemStateIcon: '<i class="state-icon"></i>',
@@ -76,10 +76,17 @@
             let _this = this;
             this.build($(this.element), this.tree, 0);
             // Update angle icon on collapse
-            $(this.element).on('click', '[data-bs-toggle="collapse"]', function (e) {        
-                $('.state-icon', this)
-                    .toggleClass(_this.settings.expandIcon)
-                    .toggleClass(_this.settings.collapseIcon);
+            $(this.element).off("click");
+            $(this.element).on('click', '[data-bs-toggle="collapse"]', function (e) {
+                let icon = $('.state-icon', this);
+                if (icon.hasClass(_this.settings.expandIcon)){
+                    icon.removeClass(_this.settings.expandIcon);
+                    icon.addClass(_this.settings.collapseIcon);
+                }
+                else {
+                    icon.removeClass(_this.settings.collapseIcon);
+                    icon.addClass(_this.settings.expandIcon);
+                }
                 // navigate to href if present
                 if (e.target.hasAttribute('href')) {
                     if (_this.settings.openNodeLinkOnNewTab) {
@@ -89,7 +96,7 @@
                         window.location = e.target.getAttribute('href');
                     }
                 }
-                
+
             });
         },
         /**
@@ -98,10 +105,10 @@
          */
         initData: function (node) {
             if (!node.nodes) return;
-            
+
             let parent = node;
             let _this = this;
-            $.each(node.nodes, function (index, node) {            
+            $.each(node.nodes, function (index, node) {
                 node.nodeId = _this.nodes.length;
                 node.parentId = parent.nodeId;
                 _this.nodes.push(node);
@@ -113,7 +120,7 @@
         },
         /**
          * reset the tree
-         * @param {*} node start node 
+         * @param {*} node start node
          */
         reset: function(node) {
             this.settings.data = node;
@@ -125,12 +132,12 @@
          * @param {*} text  text
          * @param {*} ignoreCase if true ignore case otherwise use case
          */
-        search: function (text, ignoreCase) {            
+        search: function (text, ignoreCase) {
             if (text.length > 0) {
-                let resultNode = new JsonSearch().searchAndReturnStructure(this._tree,text,ignoreCase);                
+                let resultNode = new JsonSearch().searchAndReturnStructure(this._tree,text,ignoreCase);
                 this.reset(resultNode)
             }
-            else {                        
+            else {
                 this.reset(this._tree);
             }
         },
@@ -143,12 +150,12 @@
         build: function (parentElement, nodes, depth) {
             let _this = this;
             // Calculate item padding.
-            
+
             depth += 1;
             // Add each node and sub-nodes.
             $.each(nodes, function addNodes(id, node) {
-				
-				let leftPadding = _this.settings.parentsMarginLeft;
+
+                let leftPadding = _this.settings.parentsMarginLeft;
 
                 if (depth > 0) {
                     leftPadding = (depth-1) * _this.settings.indent;
@@ -157,11 +164,11 @@
                 if (!node.nodes) {
                     leftPadding+=_this.settings.chevronIntent;
                 }
-				
+
                 // Main node element.
                 let treeItem = $(templates.treeviewItem)
                     .attr('data-bs-target', "#" + _this.itemIdPrefix + node.nodeId)
-                    .attr('style', 'padding-left:' + leftPadding+"rem")                    
+                    .attr('style', 'padding-left:' + leftPadding+"rem")
                 // Set Expand and Collapse icones.
                 if (node.nodes) {
                     let treeItemStateIcon = $(templates.treeviewItemStateIcon).addClass((node.expanded)?_this.settings.expandIcon:_this.settings.collapseIcon);
@@ -228,36 +235,36 @@ class JsonSearch {
         let newArray = new Array();
         jsonData.forEach(item => {
             const newItem = {};
-    
+
             for (let key in item) {
                 if (key === 'nodes' && Array.isArray(item[key])) {
                     const result = this.searchAndReturnStructure(item[key], searchText, ignoreCase);
-                    if (result.length > 0) {                       
+                    if (result.length > 0) {
                         for (let k in item) {
                             newItem[k] = item[k];
                         }
                         newItem[key] = result;
                     }
-                } else if (key === 'text' && typeof item[key] === 'string' && this.match(item[key],searchText, ignoreCase)) {                    
+                } else if (key === 'text' && typeof item[key] === 'string' && this.match(item[key],searchText, ignoreCase)) {
                     //add all object
                     return newArray.push(item);
                 } else if (typeof item[key] === 'object' && item[key] !== null) {
                     newItem[key] = item[key];
                 }
             }
-    
+
             if (Object.keys(newItem).length > 0) {
                 newArray.push(newItem);
             }
         });
-    
+
         return newArray;
     }
     /**
      * match values
-     * @param {*} value1 
-     * @param {*} value2 
-     * @param {*} ignoreCase 
+     * @param {*} value1
+     * @param {*} value2
+     * @param {*} ignoreCase
      */
     match(value1, value2, ignoreCase) {
         if (ignoreCase) {
@@ -266,5 +273,5 @@ class JsonSearch {
         }
         return value1.includes(value2)
     }
-  }
+}
   
